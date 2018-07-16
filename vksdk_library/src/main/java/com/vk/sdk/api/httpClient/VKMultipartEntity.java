@@ -24,6 +24,7 @@ package com.vk.sdk.api.httpClient;
 import android.util.Pair;
 import android.webkit.MimeTypeMap;
 
+import com.vk.sdk.api.httpClient.FileTypeHelper;
 import com.vk.sdk.api.model.VKAttachments;
 
 import java.io.File;
@@ -82,7 +83,7 @@ public class VKMultipartEntity {
         } else {
             fileName = String.format(Locale.US, "file%d", i + 1);
         }
-        String extension = MimeTypeMap.getFileExtensionFromUrl(uploadFile.getAbsolutePath());
+        String extension = FileTypeHelper.getFileExtensionFromUrl(uploadFile.getAbsolutePath());
         return String.format("\r\n--%s\r\n", mBoundary) +
                 String.format("Content-Disposition: form-data; name=\"%s\"; filename=\"%s.%s\"\r\n", fileName, fileName, extension) +
                 String.format("Content-Type: %s\r\n\r\n", getMimeType(uploadFile.getAbsolutePath()));
