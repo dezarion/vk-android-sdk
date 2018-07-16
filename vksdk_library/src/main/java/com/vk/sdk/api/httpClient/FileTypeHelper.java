@@ -27,7 +27,7 @@ public class FileTypeHelper {
  			// if the filename contains special characters, we don't
  			// consider it valid for our matching purposes:
  			if (!filename.isEmpty() &&
- 					Pattern.matches("[[\\w][\\_\\.\\-][\\(\\)\\%]]+", filename)) {
+ 					Pattern.matches("[а-яА-Я a-zA-Z_0-9\\.\\-\\(\\)\\%]+", filename)) {
  				int dotPos = filename.lastIndexOf('.');
  				if (0 <= dotPos) {
  					return filename.substring(dotPos + 1);
